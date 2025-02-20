@@ -1,7 +1,7 @@
 var name = prompt("1文字");
 var player = document.getElementByid("player");
-if (name.length == 1) {
-  document.getElementById("player").innerHTML = "a";
+if (playerName && playerName.length === 1) {
+  player.innerHTML = "a";
+} else {
+  player.innerHTML = playerName;
 }
-
-document.getElementById("player").innerHTML = name;
