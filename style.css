@@ -4,6 +4,8 @@
  left: 10px;
 }
 .stage{
- width: 32px;
- height: 32px;
+ position: absolute;
+ top: 110px;
+ width: 64px;
+ height: 64px;
 }
