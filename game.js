@@ -7,7 +7,7 @@ while (name.length !== 1) {
 player.innerHTML=name;
 var hit = [];
 var imgName="";
-var stage = [0,1,0,1,1,0,0,1,1,1,0,0];
+var stage = [1,1,0,1,1,0,0,0,1,1,0,0];
 for (var i = 0; i < stage.length; i++) {
   if (stage[i] === 1) {
     imgName += "<img src='地面.png' class='stage'>";  // 1の場合、地面画像
