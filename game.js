@@ -6,18 +6,20 @@ while (name.length !== 1) {
 }
 player.innerHTML=name;
 
+var stagehit=[];
 var imgName="";
 var stage = [0,1,0,1,1,0,0,1,1,1,0,0];
 for (var i = 0; i < stage.length; i++) {
   if (stage[i] === 1) {
     imgName += "<img src='地面.png' class='stage'>";  // 1の場合、地面画像
+    stagehit.push(i *64,(i+1)×64)
   } else {
     imgName += "<img src='空.png' class='stage'>";  // 0の場合、空画像
   }
 }
 stageElement.innerHTML=imgName
 
-
+playe.style
 
 
 
