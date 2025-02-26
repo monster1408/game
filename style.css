@@ -1,7 +1,7 @@
 #player{
  position: absolute;
  top: 100px;
- left: 10px;
+ left: 0px;
 }
 .stage{
  width: 64px;
@@ -10,4 +10,5 @@
 #stage{
  position: absolute;
  top: 140px;
+ left: 0px;
 }
