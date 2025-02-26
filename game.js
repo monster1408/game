@@ -24,3 +24,4 @@ function playermove(){
       player.style.left= parseInt(player.style.left)+1;
     }
 }
+player();
