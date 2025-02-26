@@ -21,7 +21,7 @@ stageElement.innerHTML=imgName
 function playermove(){
     for(i=0; i<hit.length; i++)
     if (parseInt(player.style.left) < hit[i*2] && parseInt(player.style.left) > hit[i*2+1]){
-      player.style.left= parseInt(player.style.left)+1;
+      player.style.left= parseInt(player.style.left)+1+"px";
     }
 }
 playermove();
