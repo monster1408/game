@@ -20,5 +20,7 @@ stageElement.innerHTML=imgName
 
 function playermove(){
     for(i=0; i<hit.length; i++)
-    player.style.left < hit[i*2] && player.style.left > hit[i*2+1]
+    if (player.style.left < hit[i*2] && player.style.left > hit[i*2+1]){
+      player.style.left= player.style.left+1
+    }
 }
