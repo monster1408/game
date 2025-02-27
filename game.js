@@ -95,6 +95,8 @@ function movePlayer() {
   }
 }
 
+
+
 // キー入力処理
 document.addEventListener('keydown', function(e) {
   if (e.key === "ArrowRight") { // 右矢印キー
