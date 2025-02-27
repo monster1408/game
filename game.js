@@ -113,3 +113,4 @@ document.addEventListener('keydown', function(e) {
 
 // ゲームループ（60fpsでプレイヤーの移動を更新）
 setInterval(movePlayer, 16); // 約60fpsでゲーム更新
+
