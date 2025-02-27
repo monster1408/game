@@ -3,7 +3,7 @@ function gameOver() {
   alert("ゲームオーバー！ プレイヤーが空中に浮いてしまいました。");
   // ゲームオーバー時の処理（例: プレイヤーを停止、リセットなど）
   player.style.left = "0px"; // プレイヤーを初期位置に戻す
-  player.style.top = "352px"; // プレイヤーを地面に戻す
+  player.style.top = "480px"; // プレイヤーを地面に戻す
   playerXPosition = 0; // X座標リセット
   playerYPosition = 480; // Y座標リセット
   isPlayerJumping = false; // ジャンプ状態リセット
@@ -38,9 +38,10 @@ for (var i = 0; i < stageLayout.length; i++) {
 }
 stageElement.innerHTML = stageElements; // ステージを描画
 
-// プレイヤーの初期位置
+// プレイヤーの初期位置と画像の高さ
 player.style.left = "0px";
 player.style.top = "480px"; // 初期のY座標（地面に合わせる）
+player.style.height = "40px"; // プレイヤーの高さ（画像の高さに合わせて調整）
 
 // プレイヤーの動き
 var playerMoveSpeed = 4; // プレイヤーの移動速度
@@ -89,7 +90,7 @@ function movePlayer() {
     playerYPosition -= jumpSpeed; // プレイヤーを上に移動
   }
 
-  // ジャンプ終了処理
+  // ジャンプ終了処理（地面に戻る場合、落下を開始）
   if (playerYPosition <= 480 - 40) { // 高さが40ピクセル以下でジャンプ終了
     isPlayerJumping = false; // ジャンプフラグをリセット
   }
@@ -113,3 +114,4 @@ document.addEventListener('keydown', function(e) {
 
 // ゲームループ（60fpsでプレイヤーの移動を更新）
 setInterval(movePlayer, 16); // 約60fpsでゲーム更新
+
