@@ -5,7 +5,7 @@ function gameOver() {
   player.style.left = "0px"; // プレイヤーを初期位置に戻す
   player.style.top = "352px"; // プレイヤーを地面に戻す
   playerXPosition = 0; // X座標リセット
-  playerYPosition = 352; // Y座標リセット
+  playerYPosition = 480; // Y座標リセット
   isPlayerJumping = false; // ジャンプ状態リセット
   jumpHeight = 0; // ジャンプの高さリセット
 }
@@ -40,7 +40,7 @@ stageElement.innerHTML = stageElements; // ステージを描画
 
 // プレイヤーの初期位置
 player.style.left = "0px";
-player.style.top = "416px"; // 初期のY座標（地面に合わせる）
+player.style.top = "480px"; // 初期のY座標（地面に合わせる）
 
 // プレイヤーの動き
 var playerMoveSpeed = 4; // プレイヤーの移動速度
@@ -48,7 +48,7 @@ var fallSpeed = 2; // 重力（落下速度）
 var jumpSpeed = 1; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
 var playerXPosition = 0; // プレイヤーのX座標
-var playerYPosition = 416; // プレイヤーのY座標（地面の位置）
+var playerYPosition = 480; // プレイヤーのY座標（地面の位置）
 var jumpHeight = 0; // ジャンプの高さ
 
 // プレイヤー移動関数
