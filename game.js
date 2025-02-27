@@ -44,7 +44,7 @@ player.style.top = "352px"; // 初期のY座標（地面に合わせる）
 // プレイヤーの動き
 var playerMoveSpeed = 4; // プレイヤーの移動速度
 var fallSpeed = 2; // 重力（落下速度）
-var jumpSpeed = 5; // ジャンプの速度
+var jumpSpeed = 1; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
 var playerXPosition = 0; // プレイヤーのX座標
 var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
@@ -64,7 +64,7 @@ function movePlayer() {
   }
 
   // プレイヤーが空の位置以下にいる場合はゲームオーバー
-  if (playerYPosition > 352 && !onGround) {
+  if (playerYPosition > 426 && !onGround) {
     gameOver(); // ゲームオーバー関数を呼び出し
     return; // ゲームオーバーになったので、以下の処理は実行しない
   }
@@ -88,7 +88,7 @@ function movePlayer() {
     jumpTimer++; // ジャンプ中の時間を増加
 
     // 一定時間後にジャンプを終了させる
-    if (jumpTimer > 10) { // ジャンプ時間が過ぎたら
+    if (jumpTimer > 20) { // ジャンプ時間が過ぎたら
       isPlayerJumping = false; // ジャンプフラグをリセット
       jumpTimer = 0; // ジャンプタイマーをリセット
     }
