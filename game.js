@@ -95,8 +95,6 @@ function movePlayer() {
   }
 }
 
-
-
 // キー入力処理
 document.addEventListener('keydown', function(e) {
   if (e.key === "ArrowRight") { // 右矢印キー
@@ -112,6 +110,10 @@ document.addEventListener('keydown', function(e) {
     isPlayerJumping = true; // ジャンプフラグを立てる
   }
 });
+
+// ゲームループ（60fpsでプレイヤーの移動を更新）
+setInterval(movePlayer, 16); // 約60fpsでゲーム更新
+
 
 // ゲームループ（60fpsでプレイヤーの移動を更新）
 setInterval(movePlayer, 16); // 約60fpsでゲーム更新
