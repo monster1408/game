@@ -7,6 +7,7 @@ function gameOver() {
   playerXPosition = 0; // X座標リセット
   playerYPosition = 352; // Y座標リセット
   isPlayerJumping = false; // ジャンプ状態リセット
+  jumpHeight = 0; // ジャンプの高さリセット
 }
 
 // プレイヤーキャラクターの設定
@@ -49,7 +50,6 @@ var isPlayerJumping = false; // プレイヤーがジャンプしているかど
 var playerXPosition = 0; // プレイヤーのX座標
 var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
 var jumpHeight = 0; // ジャンプの高さ
-var jumpTimer = 0; // ジャンプタイマー
 
 // プレイヤー移動関数
 function movePlayer() {
@@ -76,28 +76,22 @@ function movePlayer() {
     if (!isPlayerJumping) {
       player.style.top = "352px"; // 地面にいる時はY位置をリセット
       playerYPosition = 352; // Y座標もリセット
-      jumpHeight = 0; // ジャンプ高さをリセット
     }
   } else {
-    // ジャンプ中、または空中では落下
+    // ジャンプ中や空中では落下
     player.style.top = playerYPosition + fallSpeed + "px"; // 空中では落下
     playerYPosition += fallSpeed; // 空中でのY座標更新
-    if (isPlayerJumping) {
-      jumpHeight += jumpSpeed; // ジャンプ中の高さを増加
-      player.style.top = playerYPosition - jumpHeight + "px"; // 上に移動
-    }
   }
 
   // ジャンプ中であれば、上に移動
-  if (isPlayerJumping && jumpHeight <= 40) { // 一定の高さ（ジャンプ限界）までジャンプ
-    jumpHeight += jumpSpeed; // Y座標更新
+  if (isPlayerJumping && playerYPosition > 352 - 40) { // 高さが40ピクセルを超えたら上昇を止める
+    player.style.top = playerYPosition - jumpSpeed + "px"; // 上に移動
     playerYPosition -= jumpSpeed; // プレイヤーを上に移動
   }
 
   // ジャンプ終了処理
-  if (jumpHeight > 40) { // ジャンプが終わったら
+  if (playerYPosition <= 352 - 40) { // 高さが40ピクセル以下でジャンプ終了
     isPlayerJumping = false; // ジャンプフラグをリセット
-    jumpHeight = 0; // ジャンプタイマーをリセット
   }
 }
 
@@ -119,4 +113,3 @@ document.addEventListener('keydown', function(e) {
 
 // ゲームループ（60fpsでプレイヤーの移動を更新）
 setInterval(movePlayer, 16); // 約60fpsでゲーム更新
-
