@@ -51,7 +51,7 @@ function movePlayer() {
 
   // プレイヤーが地面にいる場合、移動
   if (onGround) {
-    player.style.left = playerXPosition + playerMoveSpeed + "px"; // 左から右へ移動
+    player.style.left = playerXPosition + "px"; // プレイヤーX位置の更新
     if (!isPlayerJumping) {
       player.style.top = "352px"; // 地面にいる時はY位置をリセット
       playerYPosition = 352; // Y座標もリセット
