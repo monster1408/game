@@ -18,7 +18,7 @@ var stageWidth = stageLayout.length * 64; // ステージの横幅
 // ステージの表示
 for (var i = 0; i < stageLayout.length; i++) {
   if (stageLayout[i] === 1) {
-    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 352px;'>"; // 地面の位置
+    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 416px;'>"; // 地面の位置
     groundPositions.push(i * 64, (i + 1) * 64); // 地面の範囲（左右端）を記録
   } else {
     stageElements += "<img src='空.png' class='stage' style='left:" + i * 64 + "px; top: 352px;'>"; // 空の位置
@@ -42,11 +42,21 @@ var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
 function movePlayer() {
   // プレイヤーが地面にいるか確認
   var onGround = false;
+  var currentGroundPosition = 0;
+
+  // プレイヤーが地面にいるか、空にいるかチェック
   for (var i = 0; i < groundPositions.length; i += 2) {
     if (playerXPosition >= groundPositions[i] && playerXPosition < groundPositions[i + 1]) {
       onGround = true;
+      currentGroundPosition = groundPositions[i];
       break;
     }
+  }
+
+  // プレイヤーが空の位置以下にいる場合はゲームオーバー
+  if (playerYPosition > 352 && !onGround) {
+    gameOver(); // ゲームオーバー関数を呼び出し
+    return; // ゲームオーバーになったので、以下の処理は実行しない
   }
 
   // プレイヤーが地面にいる場合、移動
@@ -67,6 +77,17 @@ function movePlayer() {
     playerYPosition -= jumpSpeed; // Y座標更新
     isPlayerJumping = false; // 1回ジャンプしたら、フラグをリセット
   }
+}
+
+// ゲームオーバー関数
+function gameOver() {
+  alert("ゲームオーバー！ プレイヤーが空中に浮いてしまいました。");
+  // ゲームオーバー時の処理（例: プレイヤーを停止、リセットなど）
+  player.style.left = "0px"; // プレイヤーを初期位置に戻す
+  player.style.top = "352px"; // プレイヤーを地面に戻す
+  playerXPosition = 0; // X座標リセット
+  playerYPosition = 352; // Y座標リセット
+  isPlayerJumping = false; // ジャンプ状態リセット
 }
 
 // キー入力処理
