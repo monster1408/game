@@ -44,7 +44,7 @@ player.style.top = "352px"; // 初期のY座標（地面に合わせる）
 // プレイヤーの動き
 var playerMoveSpeed = 4; // プレイヤーの移動速度
 var fallSpeed = 2; // 重力（落下速度）
-var jumpSpeed = 20; // ジャンプの速度
+var jumpSpeed = 5; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
 var playerXPosition = 0; // プレイヤーのX座標
 var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
