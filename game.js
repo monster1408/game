@@ -1,3 +1,14 @@
+// ゲームオーバー関数
+function gameOver() {
+  alert("ゲームオーバー！ プレイヤーが空中に浮いてしまいました。");
+  // ゲームオーバー時の処理（例: プレイヤーを停止、リセットなど）
+  player.style.left = "0px"; // プレイヤーを初期位置に戻す
+  player.style.top = "352px"; // プレイヤーを地面に戻す
+  playerXPosition = 0; // X座標リセット
+  playerYPosition = 352; // Y座標リセット
+  isPlayerJumping = false; // ジャンプ状態リセット
+}
+
 // プレイヤーキャラクターの設定
 var playerName = prompt("1文字");
 var player = document.getElementById("player");
@@ -77,17 +88,6 @@ function movePlayer() {
     playerYPosition -= jumpSpeed; // Y座標更新
     isPlayerJumping = false; // 1回ジャンプしたら、フラグをリセット
   }
-}
-
-// ゲームオーバー関数
-function gameOver() {
-  alert("ゲームオーバー！ プレイヤーが空中に浮いてしまいました。");
-  // ゲームオーバー時の処理（例: プレイヤーを停止、リセットなど）
-  player.style.left = "0px"; // プレイヤーを初期位置に戻す
-  player.style.top = "352px"; // プレイヤーを地面に戻す
-  playerXPosition = 0; // X座標リセット
-  playerYPosition = 352; // Y座標リセット
-  isPlayerJumping = false; // ジャンプ状態リセット
 }
 
 // キー入力処理
