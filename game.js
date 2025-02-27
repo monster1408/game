@@ -40,7 +40,7 @@ stageElement.innerHTML = stageElements; // ステージを描画
 
 // プレイヤーの初期位置
 player.style.left = "0px";
-player.style.top = "352px"; // 初期のY座標（地面に合わせる）
+player.style.top = "416px"; // 初期のY座標（地面に合わせる）
 
 // プレイヤーの動き
 var playerMoveSpeed = 4; // プレイヤーの移動速度
