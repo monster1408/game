@@ -48,7 +48,7 @@ var fallSpeed = 2; // 重力（落下速度）
 var jumpSpeed = 1; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
 var playerXPosition = 0; // プレイヤーのX座標
-var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
+var playerYPosition = 416; // プレイヤーのY座標（地面の位置）
 var jumpHeight = 0; // ジャンプの高さ
 
 // プレイヤー移動関数
