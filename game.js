@@ -30,10 +30,10 @@ var stageWidth = stageLayout.length * 64; // ステージの横幅
 // ステージの表示
 for (var i = 0; i < stageLayout.length; i++) {
   if (stageLayout[i] === 1) {
-    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 560px;'>"; // 地面の位置
+    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 352px;'>"; // 地面の位置
     groundPositions.push(i * 64, (i + 1) * 64); // 地面の範囲（左右端）を記録
   } else {
-    stageElements += "<img src='空.png' class='stage' style='left:" + i * 64 + "px; top: 560px;'>"; // 空の位置
+    stageElements += "<img src='空.png' class='stage' style='left:" + i * 64 + "px; top: 352px;'>"; // 空の位置
   }
 }
 stageElement.innerHTML = stageElements; // ステージを描画
