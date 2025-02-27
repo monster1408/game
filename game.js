@@ -35,12 +35,11 @@ var playerMoveSpeed = 4; // プレイヤーの移動速度
 var fallSpeed = 2; // 重力（落下速度）
 var jumpSpeed = 20; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
+var playerXPosition = 0; // プレイヤーのX座標
+var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
 
 // プレイヤー移動関数
 function movePlayer() {
-  var playerXPosition = parseInt(player.style.left);
-  var playerYPosition = parseInt(player.style.top);
-
   // プレイヤーが地面にいるか確認
   var onGround = false;
   for (var i = 0; i < groundPositions.length; i += 2) {
@@ -55,28 +54,30 @@ function movePlayer() {
     player.style.left = playerXPosition + playerMoveSpeed + "px"; // 左から右へ移動
     if (!isPlayerJumping) {
       player.style.top = "352px"; // 地面にいる時はY位置をリセット
+      playerYPosition = 352; // Y座標もリセット
     }
   } else {
     player.style.top = playerYPosition + fallSpeed + "px"; // 空中では落下
+    playerYPosition += fallSpeed; // 空中でのY座標更新
   }
 
   // ジャンプ中であれば、上に移動
-  if (isPlayerJumping) {
+  if (isPlayerJumping && onGround) {
     player.style.top = playerYPosition - jumpSpeed + "px"; // 上方向に移動
+    playerYPosition -= jumpSpeed; // Y座標更新
     isPlayerJumping = false; // 1回ジャンプしたら、フラグをリセット
   }
 }
 
 // キー入力処理
 document.addEventListener('keydown', function(e) {
-  var playerXPosition = parseInt(player.style.left);
-  var playerYPosition = parseInt(player.style.top);
-
   if (e.key === "ArrowRight") { // 右矢印キー
-    player.style.left = playerXPosition + playerMoveSpeed + "px"; // 移動速度をplayerMoveSpeedで制御
+    playerXPosition += playerMoveSpeed; // 右に移動
+    player.style.left = playerXPosition + "px";
   }
   if (e.key === "ArrowLeft") { // 左矢印キー
-    player.style.left = playerXPosition - playerMoveSpeed + "px"; // 移動速度をplayerMoveSpeedで制御
+    playerXPosition -= playerMoveSpeed; // 左に移動
+    player.style.left = playerXPosition + "px";
   }
 
   if (e.key === " " && !isPlayerJumping) { // スペースキーでジャンプ
