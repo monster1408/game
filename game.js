@@ -30,10 +30,10 @@ var stageWidth = stageLayout.length * 64; // ステージの横幅
 // ステージの表示
 for (var i = 0; i < stageLayout.length; i++) {
   if (stageLayout[i] === 1) {
-    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 288px;'>"; // 地面の位置
+    stageElements += "<img src='地面.png' class='stage' style='left:" + i * 64 + "px; top: 480px;'>"; // 地面の位置
     groundPositions.push(i * 64, (i + 1) * 64); // 地面の範囲（左右端）を記録
   } else {
-    stageElements += "<img src='空.png' class='stage' style='left:" + i * 64 + "px; top: 288px;'>"; // 空の位置
+    stageElements += "<img src='空.png' class='stage' style='left:" + i * 64 + "px; top: 480px;'>"; // 空の位置
   }
 }
 stageElement.innerHTML = stageElements; // ステージを描画
@@ -65,7 +65,7 @@ function movePlayer() {
   }
 
   // プレイヤーが空の位置以下にいる場合はゲームオーバー
-  if (playerYPosition > 416 && !onGround) {
+  if (playerYPosition > 560 && !onGround) {
     gameOver(); // ゲームオーバー関数を呼び出し
     return; // ゲームオーバーになったので、以下の処理は実行しない
   }
@@ -74,8 +74,8 @@ function movePlayer() {
   if (onGround) {
     player.style.left = playerXPosition + "px"; // プレイヤーX位置の更新
     if (!isPlayerJumping) {
-      player.style.top = "352px"; // 地面にいる時はY位置をリセット
-      playerYPosition = 352; // Y座標もリセット
+      player.style.top = "480px"; // 地面にいる時はY位置をリセット
+      playerYPosition = 480; // Y座標もリセット
     }
   } else {
     // ジャンプ中や空中では落下
@@ -84,13 +84,13 @@ function movePlayer() {
   }
 
   // ジャンプ中であれば、上に移動
-  if (isPlayerJumping && playerYPosition > 352 - 40) { // 高さが40ピクセルを超えたら上昇を止める
+  if (isPlayerJumping && playerYPosition > 480 - 40) { // 高さが40ピクセルを超えたら上昇を止める
     player.style.top = playerYPosition - jumpSpeed + "px"; // 上に移動
     playerYPosition -= jumpSpeed; // プレイヤーを上に移動
   }
 
   // ジャンプ終了処理
-  if (playerYPosition <= 352 - 40) { // 高さが40ピクセル以下でジャンプ終了
+  if (playerYPosition <= 480 - 40) { // 高さが40ピクセル以下でジャンプ終了
     isPlayerJumping = false; // ジャンプフラグをリセット
   }
 }
