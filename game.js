@@ -48,18 +48,17 @@ var jumpSpeed = 20; // ジャンプの速度
 var isPlayerJumping = false; // プレイヤーがジャンプしているかどうか
 var playerXPosition = 0; // プレイヤーのX座標
 var playerYPosition = 352; // プレイヤーのY座標（地面の位置）
+var jumpTimer = 0; // ジャンプタイマー
 
 // プレイヤー移動関数
 function movePlayer() {
   // プレイヤーが地面にいるか確認
   var onGround = false;
-  var currentGroundPosition = 0;
 
   // プレイヤーが地面にいるか、空にいるかチェック
   for (var i = 0; i < groundPositions.length; i += 2) {
     if (playerXPosition >= groundPositions[i] && playerXPosition < groundPositions[i + 1]) {
       onGround = true;
-      currentGroundPosition = groundPositions[i];
       break;
     }
   }
@@ -86,7 +85,13 @@ function movePlayer() {
   if (isPlayerJumping && onGround) {
     player.style.top = playerYPosition - jumpSpeed + "px"; // 上方向に移動
     playerYPosition -= jumpSpeed; // Y座標更新
-    isPlayerJumping = false; // 1回ジャンプしたら、フラグをリセット
+    jumpTimer++; // ジャンプ中の時間を増加
+
+    // 一定時間後にジャンプを終了させる
+    if (jumpTimer > 10) { // ジャンプ時間が過ぎたら
+      isPlayerJumping = false; // ジャンプフラグをリセット
+      jumpTimer = 0; // ジャンプタイマーをリセット
+    }
   }
 }
 
